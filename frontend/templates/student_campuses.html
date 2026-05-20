@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}TP4 - Student Mobility Choices{% endblock %}
+
+{% block content %}
+<div class="glass-panel">
+    <span class="badge-exercise">Exercise 4</span>
+    
+    <h1>Database JOIN List</h1>
+    <p class="page-subtitle">Displays student emails and their selected campuses by joining the <code>MobilityWish</code> and <code>Campus</code> tables.</p>
+
+    {% if error %}
+    <div class="alert alert-danger" style="background: rgba(239, 68, 68, 0.12); border-color: rgba(239, 68, 68, 0.3); color: #f87171;">
+        ⚠️ <strong>Database Connection Failed:</strong> {{ error }}
+    </div>
+    {% endif %}
+
+    <h2>Mobility Wishes List</h2>
+    <p>Executing JOIN Query: <code>SELECT MobilityWish.studentMail, Campus.campusName FROM MobilityWish JOIN Campus ON MobilityWish.Campus_idCampus = Campus.idCampus</code></p>
+    
+    <ol class="premium-list" style="margin: 1.5rem 0;">
+        {% for row in wish_rows %}
+        <li class="premium-list-item">
+            <span class="item-index">{{ loop.index }}</span>
+            <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+                <span style="font-family: monospace; font-size: 1rem; color: var(--text-link);">{{ row[0] }}</span>
+                <span class="table-badge">{{ row[1] }}</span>
+            </div>
+        </li>
+        {% else %}
+        <p style="color: var(--text-muted);">No mobility wishes found. Make some wishes on the "Make a Wish" page!</p>
+        {% endfor %}
+    </ol>
+
+    <div style="margin-top: 2.5rem; display: flex; gap: 15px;">
+        <a href="/students" class="btn btn-secondary">Back to TP3</a>
+        <a href="/table-db" class="btn">Proceed to TP6</a>
+    </div>
+</div>
+{% endblock %}

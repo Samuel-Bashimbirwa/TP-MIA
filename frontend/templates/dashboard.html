@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}TP7 - Portal Dashboard{% endblock %}
+
+{% block content %}
+<div class="glass-panel">
+    <span class="badge-exercise">Exercise 7</span>
+    
+    <h1>Multi-Route Web Portal</h1>
+    <p class="page-subtitle">A unified administration portal merging previous exercises, allowing cross-navigation and real-time database metric reporting.</p>
+
+    <!-- Unified Menu Links -->
+    <div style="background: rgba(255, 255, 255, 0.02); padding: 1rem 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 2rem; display: flex; gap: 20px; align-items: center;">
+        <span style="font-weight: 700; font-size: 0.85rem; text-transform: uppercase; color: var(--primary);">Exercise 7 Menu:</span>
+        <a href="/" style="color: var(--text-link); text-decoration: none; font-weight: 500;">🏠 Homepage</a>
+        <span style="color: rgba(255,255,255,0.1);">|</span>
+        <a href="/list" style="color: var(--text-link); text-decoration: none; font-weight: 500;">📋 List (Table)</a>
+        <span style="color: rgba(255,255,255,0.1);">|</span>
+        <a href="/add" style="color: var(--text-link); text-decoration: none; font-weight: 500;">➕ Add (Wish)</a>
+    </div>
+
+    <h2>Live Database Metrics</h2>
+    <div class="grid-stats">
+        <div class="stat-card">
+            <span class="stat-value">{{ stat_students }}</span>
+            <span class="stat-label">Registered Students</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-value">{{ stat_campuses }}</span>
+            <span class="stat-label">Available Campuses</span>
+        </div>
+        <div class="stat-card">
+            <span class="stat-value">{{ stat_wishes }}</span>
+            <span class="stat-label">Mobility Wishes</span>
+        </div>
+    </div>
+
+    <h2>Portal Shortcuts</h2>
+    <p>Select an action below to view or manage registered student mobility wishes:</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+        <div class="stat-card" style="position: relative;">
+            <h3>📋 View Student List</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0.5rem 0 1rem 0;">
+                See all registered student emails and their selected destination campuses in a styled layout.
+            </p>
+            <a href="/list" class="btn btn-secondary" style="width: fit-content;">Open List</a>
+        </div>
+        <div class="stat-card" style="position: relative;">
+            <h3>✍️ Make a Wish</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0.5rem 0 1rem 0;">
+                Submit a new mobility choice. The dropdown options are fetched dynamically from the database.
+            </p>
+            <a href="/add" class="btn" style="width: fit-content;">Make a Wish</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}TP6 - Database Table Layout{% endblock %}
+
+{% block content %}
+<div class="glass-panel">
+    <span class="badge-exercise">Exercise 6</span>
+    
+    <h1>Database Query Table</h1>
+    <p class="page-subtitle">Presents student mobility choices in a structured table layout combining SQL JOIN data and HTML table formatting.</p>
+
+    {% if error %}
+    <div class="alert alert-danger" style="background: rgba(239, 68, 68, 0.12); border-color: rgba(239, 68, 68, 0.3); color: #f87171;">
+        ⚠️ <strong>Database Connection Failed:</strong> {{ error }}
+    </div>
+    {% endif %}
+
+    <h2>Mobility Wishes Table</h2>
+    <table style="margin-top: 1.5rem;">
+        <thead>
+            <tr>
+                <th style="width: 80px;">Index</th>
+                <th>Student Email Address</th>
+                <th>Selected Campus Wish</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in wish_rows %}
+            <tr>
+                <td><strong>#{{ loop.index }}</strong></td>
+                <td style="font-family: monospace; font-size: 0.95rem; color: var(--text-link);">{{ row[0] }}</td>
+                <td><span class="table-badge">{{ row[1] }}</span></td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                    No student records found in the database.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin-top: 2.5rem; display: flex; gap: 15px;">
+        <a href="/student-campuses" class="btn btn-secondary">Back to TP4</a>
+        <a href="/dashboard" class="btn">Proceed to TP7 Portal</a>
+    </div>
+</div>
+{% endblock %}

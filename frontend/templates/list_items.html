@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}TP2 - Dynamic Item List{% endblock %}
+
+{% block content %}
+<div class="glass-panel">
+    <span class="badge-exercise">Exercise 2</span>
+    
+    <h1>Dynamic Page with List</h1>
+    <p class="page-subtitle">Demonstrates list generation using loops inside a dynamic view template.</p>
+    
+    <h2>Generated List Items</h2>
+    <p>The code dynamically iterates from 1 to 4 to generate the following bullet points:</p>
+    
+    <ul class="premium-list" style="margin: 1.5rem 0;">
+        {% for i in range(1, 5) %}
+        <li class="premium-list-item">
+            <span class="item-index">{{ i }}</span>
+            <span>item #{{ i }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div style="margin-top: 2.5rem; display: flex; gap: 15px;">
+        <a href="/" class="btn btn-secondary">Back Home</a>
+        <a href="/table-squares" class="btn">Proceed to TP5</a>
+    </div>
+</div>
+{% endblock %}

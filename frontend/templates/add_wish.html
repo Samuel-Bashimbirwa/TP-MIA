@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}TP8-10 - Make a Wish{% endblock %}
+
+{% block content %}
+<div class="glass-panel">
+    <span class="badge-exercise">Exercises 8, 9 & 10</span>
+    
+    <h1>Make a Mobility Wish</h1>
+    <p class="page-subtitle">Submit your choice of campus to register a student mobility request in the database.</p>
+
+    <!-- Unified Menu Links -->
+    <div style="background: rgba(255, 255, 255, 0.02); padding: 1rem 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 2rem; display: flex; gap: 20px; align-items: center;">
+        <span style="font-weight: 700; font-size: 0.85rem; text-transform: uppercase; color: var(--primary);">Exercise 7 Menu:</span>
+        <a href="/" style="color: var(--text-link); text-decoration: none; font-weight: 500;">🏠 Homepage</a>
+        <span style="color: rgba(255,255,255,0.1);">|</span>
+        <a href="/list" style="color: var(--text-link); text-decoration: none; font-weight: 500;">📋 List (Table)</a>
+        <span style="color: rgba(255,255,255,0.1);">|</span>
+        <a href="/add" style="color: var(--text-link); text-decoration: none; font-weight: 500;">➕ Add (Wish)</a>
+    </div>
+
+    <!-- Alert Messages (Exercise 9 & 10 Feedback) -->
+    {% if success_message %}
+    <div class="alert alert-success">
+        <span style="font-size: 1.25rem;">✅</span>
+        <div>
+            <strong>Success!</strong> {{ success_message }}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if student_email and campus_id %}
+    <div class="alert alert-info" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 1.25rem;">ℹ️</span>
+            <strong>Submitted Information Preview (TP9):</strong>
+        </div>
+        <ul style="margin-left: 1.5rem; margin-bottom: 0; font-size: 0.9rem;">
+            <li>Student Email: <code style="color: #fff;">{{ student_email }}</code></li>
+            <li>Campus Choice ID: <code style="color: #fff;">{{ campus_id }}</code></li>
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <div class="alert alert-danger" style="background: rgba(239, 68, 68, 0.12); border-color: rgba(239, 68, 68, 0.3); color: #f87171;">
+        ⚠️ <strong>Database Connection Failed:</strong> {{ error }}
+    </div>
+    {% endif %}
+
+    <!-- Mobility Wish Form -->
+    <h2>Wish Registration Form</h2>
+    <form action="/addsave" method="GET" style="margin-top: 1.5rem;">
+        
+        <div class="form-group">
+            <label for="student">Email Address</label>
+            <input type="email" id="student" name="student" required placeholder="example@icam.fr">
+            <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 2px;">
+                Enter the student's unique ICAM email.
+            </small>
+        </div>
+
+        <div class="form-group">
+            <label for="choice">Campus Choice</label>
+            <select id="choice" name="choice" required>
+                <option value="" disabled selected>-- Select a Campus --</option>
+                {% for campus in campus_rows %}
+                <option value="{{ campus[0] }}">{{ campus[1] }}</option>
+                {% endfor %}
+            </select>
+            <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 2px;">
+                Options are dynamically retrieved from the database.
+            </small>
+        </div>
+
+        <div style="margin-top: 1rem; display: flex; gap: 12px;">
+            <input type="submit" value="Save Choice">
+            <a href="/dashboard" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

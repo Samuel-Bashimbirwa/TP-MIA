@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}TP3 - Student Emails{% endblock %}
+
+{% block content %}
+<div class="glass-panel">
+    <span class="badge-exercise">Exercise 3</span>
+    
+    <h1>Database Query List</h1>
+    <p class="page-subtitle">Displays registered student emails fetched dynamically from the <code>Student</code> database table.</p>
+
+    {% if error %}
+    <div class="alert alert-danger" style="background: rgba(239, 68, 68, 0.12); border-color: rgba(239, 68, 68, 0.3); color: #f87171;">
+        ⚠️ <strong>Database Connection Failed:</strong> {{ error }}
+    </div>
+    {% endif %}
+
+    <h2>Registered Student Emails</h2>
+    <p>Executing: <code>SELECT * FROM Student</code></p>
+    
+    <ol class="premium-list" style="margin: 1.5rem 0;">
+        {% for row in student_rows %}
+        <li class="premium-list-item">
+            <span class="item-index">{{ loop.index }}</span>
+            <span style="font-family: monospace; font-size: 1rem; color: var(--text-link);">{{ row[1] }}</span>
+        </li>
+        {% else %}
+        <p style="color: var(--text-muted);">No student records found in the database.</p>
+        {% endfor %}
+    </ol>
+
+    <div style="margin-top: 2.5rem; display: flex; gap: 15px;">
+        <a href="/table-squares" class="btn btn-secondary">Back to TP5</a>
+        <a href="/student-campuses" class="btn">Proceed to TP4</a>
+    </div>
+</div>
+{% endblock %}

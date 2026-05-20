@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TP MIA - Dynamic Web Apps{% endblock %}</title>
+    <!-- Modern Styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <div class="logo-icon">I</div>
+            <div class="logo-text">ICAM Portal</div>
+        </div>
+
+        <ul class="nav-links">
+            <li class="nav-label">Core Exercises</li>
+            
+            <li class="nav-item">
+                <a href="/">
+                    <span>🏠 Home</span>
+                    <span class="nav-badge">TP1</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="/list-items">
+                    <span>📋 Static Item List</span>
+                    <span class="nav-badge">TP2</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/table-squares">
+                    <span>🔢 Table of Squares</span>
+                    <span class="nav-badge">TP5</span>
+                </a>
+            </li>
+
+            <li class="nav-label">Database Lists</li>
+
+            <li class="nav-item">
+                <a href="/students">
+                    <span>📧 Student Emails</span>
+                    <span class="nav-badge">TP3</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/student-campuses">
+                    <span>🌐 Students & Campuses</span>
+                    <span class="nav-badge">TP4</span>
+                </a>
+            </li>
+
+            <li class="nav-label">Database Tables & Portals</li>
+
+            <li class="nav-item">
+                <a href="/table-db">
+                    <span>📊 DB Table Layout</span>
+                    <span class="nav-badge">TP6</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/dashboard">
+                    <span>⚡ Portal Dashboard</span>
+                    <span class="nav-badge">TP7</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/add">
+                    <span>✍️ Make a Wish</span>
+                    <span class="nav-badge">TP8-10</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="/add-campus">
+                    <span>🏫 Add Campus</span>
+                    <span class="nav-badge">TP11</span>
+                </a>
+            </li>
+        </ul>
+
+        <!-- Database Connection Indicator -->
+        <div class="connection-indicator">
+            {% if db_status == "MySQL Server" %}
+            <div class="indicator-dot"></div>
+            <span>Connected: MySQL Gateway</span>
+            {% else %}
+            <div class="indicator-dot offline"></div>
+            <span>Offline Fallback (SQLite)</span>
+            {% endif %}
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+
+        <footer>
+            <p>&copy; 2026 ICAM engineering - TP MIA PBL. Built using Flask & MVC.</p>
+        </footer>
+    </main>
+
+    <!-- JS Enhancements -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

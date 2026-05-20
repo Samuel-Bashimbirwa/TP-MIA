@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}TP5 - Table of Squares{% endblock %}
+
+{% block content %}
+<div class="glass-panel">
+    <span class="badge-exercise">Exercise 5</span>
+    
+    <h1>Dynamic Page with Table</h1>
+    <p class="page-subtitle">Demonstrates dynamic table construction and explains fundamental HTML table tags.</p>
+
+    <!-- Table Implementation -->
+    <h2>Squares of Numbers</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Item ID</th>
+                <th>Square Value (i * i)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(1, 5) %}
+            <tr>
+                <td>item #{{ i }}</td>
+                <td><span class="table-badge">{{ i * i }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- HTML Explanation Panel -->
+    <h2 style="margin-top: 2rem;">HTML Tags Explanation</h2>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem;">
+        <div class="stat-card">
+            <code style="color: var(--primary); font-size: 1.1rem; font-weight: bold;">&lt;table&gt;</code>
+            <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">
+                Defines the structure of the data table. It acts as the parent container wrapping all rows, columns, and headings.
+            </p>
+        </div>
+        <div class="stat-card">
+            <code style="color: var(--secondary); font-size: 1.1rem; font-weight: bold;">&lt;tr&gt;</code>
+            <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">
+                Stands for <strong>Table Row</strong>. It defines a horizontal row of cells in the table.
+            </p>
+        </div>
+        <div class="stat-card">
+            <code style="color: var(--accent); font-size: 1.1rem; font-weight: bold;">&lt;th&gt;</code>
+            <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">
+                Stands for <strong>Table Header</strong>. Used inside a <code>&lt;tr&gt;</code> row to define a header cell, typically rendered in bold and centered by default.
+            </p>
+        </div>
+        <div class="stat-card">
+            <code style="color: var(--success); font-size: 1.1rem; font-weight: bold;">&lt;td&gt;</code>
+            <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">
+                Stands for <strong>Table Data</strong>. Used to define standard cells that hold text, numbers, or interactive elements inside a table row.
+            </p>
+        </div>
+    </div>
+
+    <div style="margin-top: 2.5rem; display: flex; gap: 15px;">
+        <a href="/list-items" class="btn btn-secondary">Back to TP2</a>
+        <a href="/students" class="btn">Proceed to TP3 (Database)</a>
+    </div>
+</div>
+{% endblock %}
