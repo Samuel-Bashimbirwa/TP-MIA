@@ -1,19 +1,19 @@
-/* CSS System for TP MIA Web Portal - Premium Minimalist Orange Theme */
+/* CSS System for TP MIA Web Portal - Premium Minimalist Light Orange Theme */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --bg-main: #0a0a0a;
-    --bg-sidebar: #121212;
-    --card-bg: #161616;
-    --card-border: #262626;
+    --bg-main: #fcfcfc;
+    --bg-sidebar: #f4f4f5;
+    --card-bg: #ffffff;
+    --card-border: #e4e4e7;
     --card-border-active: #ff6600;
     
-    --primary: #ff6600; /* Pure premium orange */
-    --primary-hover: #ff7a22;
-    --primary-glow: rgba(255, 102, 0, 0.15);
+    --primary: #ff6600; /* Vibrant Orange */
+    --primary-hover: #e65c00; /* Burnt Orange */
+    --primary-glow: rgba(255, 102, 0, 0.1);
     
-    --text-main: #f5f5f5;
-    --text-muted: #8e8e93;
+    --text-main: #09090b; /* Pure dark charcoal for readability */
+    --text-muted: #71717a; /* Muted gray text */
     --text-link: #ff6600;
     --success: #10b981;
 }
@@ -64,13 +64,13 @@ aside.sidebar {
     justify-content: center;
     font-weight: 700;
     font-size: 1.1rem;
-    color: #000000;
+    color: #ffffff;
 }
 
 .logo-text {
     font-weight: 700;
     font-size: 1.3rem;
-    color: #ffffff;
+    color: var(--text-main);
     letter-spacing: -0.03em;
 }
 
@@ -92,7 +92,7 @@ aside.sidebar {
     width: 4px;
 }
 .nav-links::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.05);
     border-radius: 4px;
 }
 
@@ -120,20 +120,21 @@ aside.sidebar {
 }
 
 .nav-item a:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-main);
+    background: rgba(0, 0, 0, 0.03);
 }
 
 .nav-item.active a {
-    color: #ffffff;
+    color: var(--text-main);
     background: rgba(255, 102, 0, 0.08);
     border-color: rgba(255, 102, 0, 0.25);
+    font-weight: 600;
 }
 
 .nav-badge {
     margin-left: auto;
     font-size: 0.7rem;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.05);
     padding: 2px 6px;
     border-radius: 4px;
     font-family: monospace;
@@ -142,7 +143,7 @@ aside.sidebar {
 
 .nav-item.active .nav-badge {
     background: var(--primary);
-    color: #000000;
+    color: #ffffff;
     font-weight: 600;
 }
 
@@ -156,7 +157,7 @@ main.main-content {
     flex-direction: column;
 }
 
-/* Minimalist Panel/Card */
+/* Minimalist Light Panel/Card */
 .glass-panel {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
@@ -165,6 +166,7 @@ main.main-content {
     margin-bottom: 2rem;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .glass-panel::before {
@@ -183,7 +185,7 @@ h1 {
     font-size: 2rem;
     margin-bottom: 0.5rem;
     letter-spacing: -0.03em;
-    color: #ffffff;
+    color: var(--text-main);
 }
 
 .page-subtitle {
@@ -196,7 +198,7 @@ h2 {
     font-weight: 600;
     font-size: 1.35rem;
     margin-bottom: 1rem;
-    color: #ffffff;
+    color: var(--text-main);
     letter-spacing: -0.02em;
 }
 
@@ -217,6 +219,7 @@ li {
     margin-bottom: 0.5rem;
     line-height: 1.5;
     font-size: 0.95rem;
+    color: var(--text-main);
 }
 
 /* Premium styled lists */
@@ -229,7 +232,7 @@ li {
 }
 
 .premium-list-item {
-    background: rgba(255, 255, 255, 0.015);
+    background: var(--card-bg);
     border: 1px solid var(--card-border);
     padding: 0.85rem 1.15rem;
     border-radius: 8px;
@@ -237,10 +240,11 @@ li {
     align-items: center;
     gap: 15px;
     transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 .premium-list-item:hover {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(0, 0, 0, 0.01);
     border-color: rgba(255, 102, 0, 0.35);
     transform: translateX(3px);
 }
@@ -248,8 +252,8 @@ li {
 .item-index {
     width: 24px;
     height: 24px;
-    background: rgba(255, 102, 0, 0.1);
-    border: 1px solid rgba(255, 102, 0, 0.3);
+    background: rgba(255, 102, 0, 0.08);
+    border: 1px solid rgba(255, 102, 0, 0.25);
     color: var(--text-link);
     border-radius: 50%;
     display: flex;
@@ -268,6 +272,7 @@ table {
     border: 1px solid var(--card-border);
     border-radius: 8px;
     overflow: hidden;
+    background: var(--card-bg);
 }
 
 th, td {
@@ -276,7 +281,7 @@ th, td {
 }
 
 th {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--bg-sidebar);
     font-weight: 600;
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -289,6 +294,7 @@ td {
     background: transparent;
     border-bottom: 1px solid var(--card-border);
     font-size: 0.9rem;
+    color: var(--text-main);
 }
 
 tr:last-child td {
@@ -296,7 +302,7 @@ tr:last-child td {
 }
 
 tr:hover td {
-    background: rgba(255, 255, 255, 0.015);
+    background: rgba(0, 0, 0, 0.015);
 }
 
 .table-badge {
@@ -336,11 +342,11 @@ input[type="email"],
 input[type="text"],
 select {
     width: 100%;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--card-bg);
     border: 1px solid var(--card-border);
     padding: 0.75rem 0.95rem;
     border-radius: 6px;
-    color: #ffffff;
+    color: var(--text-main);
     font-family: inherit;
     font-size: 0.9rem;
     transition: all 0.2s ease;
@@ -351,19 +357,20 @@ input[type="email"]:focus,
 input[type="text"]:focus,
 select:focus {
     border-color: var(--primary);
-    background: rgba(255, 255, 255, 0.04);
+    background: #ffffff;
+    box-shadow: 0 0 0 2px rgba(255, 102, 0, 0.1);
 }
 
 select option {
-    background: var(--bg-sidebar);
-    color: #ffffff;
+    background: #ffffff;
+    color: var(--text-main);
 }
 
 /* Submit and Action Buttons */
 input[type="submit"],
 .btn {
     background-color: var(--primary);
-    color: #000000;
+    color: #ffffff;
     border: none;
     padding: 0.75rem 1.35rem;
     font-size: 0.9rem;
@@ -374,12 +381,14 @@ input[type="submit"],
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    box-shadow: 0 1px 2px rgba(255, 102, 0, 0.1);
 }
 
 input[type="submit"]:hover,
 .btn:hover {
     background-color: var(--primary-hover);
     transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(255, 102, 0, 0.2);
 }
 
 input[type="submit"]:active,
@@ -388,14 +397,16 @@ input[type="submit"]:active,
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--bg-sidebar);
     border: 1px solid var(--card-border);
-    color: #ffffff;
+    color: var(--text-main);
+    box-shadow: none;
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.05);
     border-color: var(--text-muted);
+    box-shadow: none;
 }
 
 /* Notifications & Status Alerts */
@@ -413,12 +424,12 @@ input[type="submit"]:active,
 .alert-success {
     background: rgba(16, 185, 129, 0.06);
     border-color: rgba(16, 185, 129, 0.2);
-    color: #34d399;
+    color: #059669;
 }
 
 .alert-info {
-    background: rgba(255, 102, 0, 0.06);
-    border-color: rgba(255, 102, 0, 0.2);
+    background: rgba(255, 102, 0, 0.05);
+    border-color: rgba(255, 102, 0, 0.15);
     color: var(--primary);
 }
 
@@ -431,7 +442,7 @@ input[type="submit"]:active,
 }
 
 .stat-card {
-    background: var(--bg-sidebar);
+    background: var(--card-bg);
     border: 1px solid var(--card-border);
     padding: 1.25rem;
     border-radius: 8px;
@@ -439,10 +450,11 @@ input[type="submit"]:active,
     flex-direction: column;
     gap: 6px;
     transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 .stat-card:hover {
-    border-color: rgba(255, 102, 0, 0.3);
+    border-color: rgba(255, 102, 0, 0.35);
 }
 
 .stat-value {
@@ -492,9 +504,10 @@ footer {
     color: var(--text-muted);
     margin-top: auto;
     padding: 0.65rem 0.85rem;
-    background: rgba(255, 255, 255, 0.015);
+    background: #ffffff;
     border: 1px solid var(--card-border);
     border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 .indicator-dot {
